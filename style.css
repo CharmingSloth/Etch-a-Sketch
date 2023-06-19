@@ -1,0 +1,28 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.sketch-pad{
+    display: flex;
+    flex-wrap: wrap;
+    width: 640px;
+    height: 640px;
+    border: 1px solid black;
+}
+
+.pixel{
+    width: 4px;
+    height: 4px;
+    box-sizing: border-box;
+}
+
+.pixel:hover{
+    background-color: aqua;
+}
+
+.black{
+    background-color: black;
+}
