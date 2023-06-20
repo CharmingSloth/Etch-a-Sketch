@@ -11,12 +11,21 @@
     
     <div class="sketch-pad"></div>
 
-    <div class="layout-setting">
-        <input type="radio" id="16" class="resolution" value="16x16">
-        <input type="radio" id="32" class="resolution" value="32x32">
-        <input type="radio" id="64" class="resolution" value="64x64">
-        <input type="radio" id="128" class="resolution" value="128x128">
-    </div>
+    <div class="settings">
+        <div class="layout-settings">
+            <input type="radio" class="resolution" name="layout-setting" value="16" checked = "checked">
+            <input type="radio" class="resolution" name="layout-setting" value="32">
+            <input type="radio" class="resolution" name="layout-setting" value="64">
+            <input type="radio" class="resolution" name="layout-setting" value="128">
+        </div>
+        <div class="color-settings">
+            <label for="colorpicker">Change brush color:</label>
+            <input type="color" id="brush-colorpicker">
+            <label for="colorpicker">Change sketch-pad color:</label>
+            <input type="color" id="pad-colorpicker" value="#FFFFFF">
+        </div>
+        <button class="clear-button">Clear all</button>
 
+    </div>
 </body>
 </html>

@@ -1,25 +1,67 @@
 const sketchPad = document.querySelector('.sketch-pad');
+const sketchPadSize = 640;
+let radios = document.querySelectorAll('.resolution');
+let brushColor = document.querySelector('#brush-colorpicker');
+let padColor = document.querySelector('#pad-colorpicker');
+sketchPad.style.backgroundColor = padColor.value;
+let basicResolution = document.querySelector('input[name="layout-setting"]:checked').value;
 const pixel = document.createElement('div');
 pixel.classList.add('pixel');
-let flag = false;
+let clearButton = document.querySelector('.clear-button');
+let flag;
+let pixels;
 
-
-
-function paintBlack(pixel){
+function paint(pixel, color){
     window.onmouseup = () => { flag = false; }
-    pixel.onmouseover = () => { if(flag) pixel.classList.add('black'); }
-    pixel.onmousedown = () => { pixel.classList.add('black'); flag = true; }
+    pixel.onmouseover = () => { if(flag) pixel.style.backgroundColor = color }
+    pixel.onmousedown = () => { pixel.style.backgroundColor = color; flag = true; }
 }
 
+function renderPad(resolution){
+    pixel.style.width = `${sketchPadSize/resolution}px`;
+    pixel.style.height = `${sketchPadSize/resolution}px`;
+    let color = brushColor.value;
 
-
-for(i = 0; i < 160*160; i++){
-    sketchPad.appendChild(pixel.cloneNode(1));
+    for(i = 0; i < resolution**2; i++){
+        sketchPad.appendChild(pixel.cloneNode(true))
+    };
+    
+    pixels = document.querySelectorAll('.pixel')
+    pixels.forEach(pixel => {
+        paint(pixel, color);
+    });
 }
-const pixels = document.querySelectorAll('.pixel')
 
+function deletePad(){
+    pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(pixel => {
+        pixel.remove();        
+    });
+}
 
+renderPad(basicResolution);
 
-pixels.forEach(pixel => {
-    paintBlack(pixel);                  
+radios.forEach(radio => {
+    radio.addEventListener('click', (e) => {
+        deletePad();
+        renderPad(parseInt(e.target.value));
+    });
 });
+
+brushColor.addEventListener('change', (e) => {
+    pixels = document.querySelectorAll('.pixel')
+    pixels.forEach(pixel => {
+        paint(pixel, e.target.value)
+    });
+})
+
+clearButton.addEventListener('click', (e) =>{
+    deletePad();
+    renderPad(document.querySelector('input[name="layout-setting"]:checked').value);
+})
+
+padColor.addEventListener('change', (e) => {
+    sketchPad.style.backgroundColor = e.target.value;
+});
+
+
