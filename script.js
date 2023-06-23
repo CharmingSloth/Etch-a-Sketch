@@ -8,6 +8,7 @@ let basicResolution = document.querySelector('input[name="layout-setting"]:check
 const pixel = document.createElement('div');
 pixel.classList.add('pixel');
 let clearButton = document.querySelector('.clear-button');
+let shadingButton = document.querySelector('.shading-button');
 let flag;
 let pixels;
 
@@ -15,6 +16,12 @@ function paint(pixel, color){
     window.onmouseup = () => { flag = false; }
     pixel.onmouseover = () => { if(flag) pixel.style.backgroundColor = color }
     pixel.onmousedown = () => { pixel.style.backgroundColor = color; flag = true; }
+}
+
+function shading(pixel, count = 1){
+    window.onmouseup = () => { flag = false; }
+    pixel.onmouseover = () => { if(flag) count -= 0.1; pixel.style.filter = `brightness(${count})`; }
+    pixel.onmousedown = () => { count -= 0.1; pixel.style.filter = `brightness(${count})`; flag = true; }
 }
 
 function renderPad(resolution){
@@ -64,4 +71,19 @@ padColor.addEventListener('change', (e) => {
     sketchPad.style.backgroundColor = e.target.value;
 });
 
-
+shadingButton.addEventListener('click', () =>{
+    if(!(shadingButton.classList.contains('active'))){
+        shadingButton.classList.add('active')
+        pixels = document.querySelectorAll('.pixel');
+        pixels.forEach(pixel => {
+            shading(pixel);
+        }); 
+    }else{
+        shadingButton.classList.remove('active');
+        pixels.forEach(pixel =>{
+            pixels.forEach(pixel => {
+                paint(pixel, brushColor.value);
+            });
+        })
+    }
+})
