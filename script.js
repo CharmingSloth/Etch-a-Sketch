@@ -4,7 +4,8 @@ let radios = document.querySelectorAll('.resolution');
 let brushColor = document.querySelector('#brush-colorpicker');
 let padColor = document.querySelector('#pad-colorpicker');
 sketchPad.style.backgroundColor = padColor.value;
-let basicResolution = document.querySelector('input[name="layout-setting"]:checked').value;
+let basicResolution = document.querySelector('button[id="1"]').value;
+console.log(basicResolution);
 const pixel = document.createElement('div');
 pixel.classList.add('pixel');
 let clearButton = document.querySelector('.clear-button');
@@ -36,7 +37,9 @@ function renderPad(resolution){
     pixels = document.querySelectorAll('.pixel')
     pixels.forEach(pixel => {
         paint(pixel, color);
+        pixel.style.backgroundColor = padColor.value;
     });
+
 }
 
 function deletePad(){
@@ -64,11 +67,15 @@ brushColor.addEventListener('change', (e) => {
 
 clearButton.addEventListener('click', (e) =>{
     deletePad();
-    renderPad(document.querySelector('input[name="layout-setting"]:checked').value);
+    renderPad(basicResolution);
 })
 
 padColor.addEventListener('change', (e) => {
     sketchPad.style.backgroundColor = e.target.value;
+    pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = e.target.value;
+    });
 });
 
 shadingButton.addEventListener('click', () =>{

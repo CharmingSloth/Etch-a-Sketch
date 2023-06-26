@@ -3,30 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Retro sketch-pad</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    
-    <div class="sketch-pad"></div>
 
-    <div class="settings">
-        <div class="layout-settings">
-            <input type="radio" class="resolution" name="layout-setting" value="16" checked = "checked">
-            <input type="radio" class="resolution" name="layout-setting" value="32">
-            <input type="radio" class="resolution" name="layout-setting" value="64">
-            <input type="radio" class="resolution" name="layout-setting" value="128">
-        </div>
+    <h1>Retro sketch-pad</h1>
+
+    <div class="sketch-pad-wrapper">
+
         <div class="color-settings">
-            <label for="colorpicker">Change brush color:</label>
-            <input type="color" id="brush-colorpicker">
-            <label for="colorpicker">Change sketch-pad color:</label>
-            <input type="color" id="pad-colorpicker" value="#FFFFFF">
+            <div class="brush-colorpicker-wrapper">
+                <label class = "brush-label" for="brush-colorpicker">Change brush color:</label>
+                <input type="color" id="brush-colorpicker">
+            </div>
+            <div class="pad-colorpicker-wrapper">
+                <label class = "pad-label" for="pad-colorpicker">Change sketch-pad color:</label>
+                <input type="color" id="pad-colorpicker" value="#FFFFFF">
+            </div>
         </div>
-        <button class="clear-button">Clear all</button>
-        <button class="shading-button">Shading</button>
 
+        <div class="sketch-pad"></div>
+
+        <div class="layout-settings">
+            <button id = "1" class="resolution" value="16">16X16</button>
+            <button id = "1" class="resolution" value="32">32X32</button>
+            <button id = "1" class="resolution" value="64">64X64</button>
+            <button id = "1" class="resolution" value="128">128X128</button>
+            <button class="clear-button">Clear all</button>
+            <button class="shading-button">Shading</button>
+        </div>
     </div>
 </body>
 </html>

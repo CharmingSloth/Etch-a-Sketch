@@ -1,6 +1,14 @@
+@font-face {
+    font-family: "PixelFont";
+    src: url('./fonts/Minecraft.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+
 body{
+    font-family: "PixelFont";
     display: flex;
-    flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
     height: 100vh;
@@ -15,6 +23,30 @@ body{
 .color-settings{
     display: flex;
     flex-direction: row;
+    width: 660px;
+}
+
+.brush-colorpicker-wrapper, .pad-colorpicker-wrapper{
+    width: 50%;
+    height: 32px;
+    display: flex;
+    border: 10px solid black;
+    border-bottom: none;
+}
+
+#brush-colorpicker, #pad-colorpicker{
+    border: none;
+    padding: 0;
+    border-bottom: none;
+    box-sizing: border-box;
+
+}
+
+.brush-label, .pad-label{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sketch-pad{
@@ -22,7 +54,8 @@ body{
     height: 640px;
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid black;
+    border: 10px solid black;
+
 }
 
 .pixel{
@@ -32,3 +65,47 @@ body{
 .pixel:hover{
     background-color: aqua;
 }
+
+.sketch-pad-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resolution{
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 15%;
+    height: 35px;
+    border: 10px solid black;
+    border-top: none;
+}
+
+.layout-settings{
+    width: 100%;
+    display: flex;
+    
+}
+
+.active{
+    background-color: bisque;
+}
+
+.clear-button, .shading-button{
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 20%;
+    height: 35px;
+    border: 10px solid black;
+    border-top: none;
+  }
+
+  button:hover{
+    background-color: bisque;
+  }
